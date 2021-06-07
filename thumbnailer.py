@@ -13,8 +13,10 @@ def load_thumbnail(file: str, width: int, height: int) -> Image:
         out = io.BytesIO()
         # render square thumbnail
         # TODO: handle non-square svg
-        cairosvg.svg2png(url=file, output_width=smallest_parent_dimension, output_height=smallest_parent_dimension, write_to=out)
+        cairosvg.svg2png(url=file, output_width=smallest_parent_dimension, output_height=smallest_parent_dimension,
+                         write_to=out)
         return Image.open(out)
+
 
 def calc_anchor(width: int, height: int):
     if width > height:
@@ -24,11 +26,12 @@ def calc_anchor(width: int, height: int):
         gap = int((height - width) / 2)
         return (0, gap)
 
+
 def main():
     parser = argparse.ArgumentParser(description='Toyhouse image processor')
     parser.add_argument('in_file', help='The file to process')
     parser.add_argument('--stamp', nargs='?', default='stamp.svg',
-                        help='The image to superimpose for the tumbnail (SVG)')
+                        help='The image to superimpose for the thumbnail (SVG)')
     parser.add_argument('-d', '--dimension', nargs='?', default=None, type=int,
                         help='The maximum dimension the image should have')
 
@@ -58,7 +61,7 @@ def main():
     # generate position required for centering
     position = calc_anchor(in_image.width, in_image.height)
 
-    #in_image.paste(thumbnail, position, thumbnail)
+    # in_image.paste(thumbnail, position, thumbnail)
     if args.dimension is not None:
         # save resized image
         in_image.save(filename_root + '_resized.png', 'PNG')
