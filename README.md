@@ -9,7 +9,7 @@ If on windows, I cannot help you (trust me, I tried).
 
 ### Usage:
 ```
-usage: thumbnailer.py [-h] [--stamp [STAMP]] [-d [DIMENSION]] in_file
+usage: thumbnailer.py [-h] [--stamp [STAMP]] [-d [DIMENSION]] [in_file]
 
 Toyhouse image processor
 
@@ -18,9 +18,10 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  --stamp [STAMP]       The image to superimpose for the tumbnail (SVG)
+  --stamp [STAMP]       The image to superimpose for the thumbnail (SVG)
   -d [DIMENSION], --dimension [DIMENSION]
                         The maximum dimension the image should have
 ```
 
 Recommended to use in combination with `find`.
+
